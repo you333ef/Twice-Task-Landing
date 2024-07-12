@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TASK TWO WEB MASTER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="./leon.css">
     <link rel="stylesheet" href="./bootstrap-4.0.0-dist (1)/css/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/1.9.3/countUp.min.js"></script>
@@ -21,10 +22,10 @@
               <a class="nav-link" href="#" id="stylish">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" id="stylish" href="#">About</a>
+              <a class="nav-link disabled" id="stylish" href="#DESIGN">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" id="stylish" href="#">Services</a>
+                <a class="nav-link disabled" id="stylish" href="#SERVICES">Services</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link disabled" id="stylish" href="#">Support</a>
@@ -69,7 +70,9 @@
             </div>
         </div>
       </header>
-      <section class="Our-Services">
+      <section class="Our-Services" id="SERVICES">
+        <button id="scrollButton" style="display: none;">down</button>
+        <button id="scrollUpButton" style="display: none;">اصعد</button>
         <img src="./imgs/Services header.svg" id="SERVICES-TITLE" alt="#SERVICES">
         <div class="row PARENT-div">
             <div class="col-lg-4 col-sm-12 LIGHT-PARENT">
@@ -92,7 +95,7 @@
             </div>
         </div>
     </section>
-    <section class="design-section">
+    <section class="design-section" id="DESIGN">
         <div class="row">
             <div class="col-lg-6 col-sm-12 SEC-TION">
                 <img src="./imgs/Image.svg" alt="Designing Your Dream With Brilliance" class="design-image">
@@ -209,12 +212,7 @@
             <div class="col-md-12 col-lg-3 p-4 mb-3 ">
                <img src="./imgs/L00go.svg" class="L00go" alt="">
                 <p class="p-2 " >VivaDeco Your premier <br> destination for luxury and <br> modern interior design</p>
-                <div>
-                    <a href="#" class="ICoN"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="ICoN"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="ICoN"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="ICoN"><i class="fab fa-linkedin"></i></a>
-                </div>
+                
                 <img src="./imgs/linkedin.svg" class="ICoN" alt="">
                 <img src="./imgs/instagram.svg" class="ICoN" alt="">
                 <img src="./imgs/square-twitter.svg" class="ICoN" alt="">
@@ -253,7 +251,7 @@
     <script src="./bootstrap-4.0.0-dist (1)/js/jquery-3.7.1.min.js"></script>
     <script src="./bootstrap-4.0.0-dist (1)/js/popper.min.js"></script>
     <script src="./bootstrap-4.0.0-dist (1)/js/bootstrap.js"></script>
-    <script>
+    <script src="./Java.js">
       document.addEventListener("DOMContentLoaded", function() {
     const options = {
         duration: 10 // يمكنك تعديل هذا الرقم لتحديد مدة العداد بالثواني
@@ -281,6 +279,44 @@
         console.error(stylesCounter.error);
     }
 });
+// تعريف كلاس ScrollButton
+class ScrollButton {
+    constructor(buttonId, showAt, hideAt) {
+        this.button = document.getElementById(buttonId);
+        this.showAt = showAt;
+        this.hideAt = hideAt;
+        this.init();
+    }
+
+    init() {
+        this.button.addEventListener('click', () => this.scrollToBottom());
+        window.addEventListener('scroll', () => this.toggleButtonVisibility());
+    }
+
+    scrollToBottom() {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+
+    toggleButtonVisibility() {
+        const currentScroll = window.scrollY;
+        if (currentScroll > this.showAt && currentScroll < this.hideAt) {
+            this.button.style.display = 'block';
+        } else {
+            this.button.style.display = 'none';
+        }
+    }
+}
+
+// تحديد نقاط الظهور والاختفاء (بالبكسل)
+const showAt = 100; // يظهر بعد 100 بكسل من الهبوط
+const hideAt = document.body.scrollHeight - 500; // يختفي قبل 500 بكسل من نهاية الصفحة
+
+// إنشاء كائن من الكلاس ScrollButton
+const scrollButton = new ScrollButton('scrollButton', showAt, hideAt);
+
 
     </script>
 </body>
