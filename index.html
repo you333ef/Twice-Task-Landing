@@ -252,33 +252,7 @@
     <script src="./bootstrap-4.0.0-dist (1)/js/popper.min.js"></script>
     <script src="./bootstrap-4.0.0-dist (1)/js/bootstrap.js"></script>
     <script src="./Java.js">
-      document.addEventListener("DOMContentLoaded", function() {
-    const options = {
-        duration: 10 // يمكنك تعديل هذا الرقم لتحديد مدة العداد بالثواني
-    };
-
-    const projectsCounter = new CountUp('projects-counter', 0, 400, 0, options.duration);
-    const clientsCounter = new CountUp('clients-counter', 0, 600, 0, options.duration);
-    const stylesCounter = new CountUp('styles-counter', 0, 100, 0, options.duration);
-
-    if (!projectsCounter.error) {
-        projectsCounter.start();
-    } else {
-        console.error(projectsCounter.error);
-    }
-
-    if (!clientsCounter.error) {
-        clientsCounter.start();
-    } else {
-        console.error(clientsCounter.error);
-    }
-
-    if (!stylesCounter.error) {
-        stylesCounter.start();
-    } else {
-        console.error(stylesCounter.error);
-    }
-});
+      
 // تعريف كلاس ScrollButton
 class ScrollButton {
     constructor(buttonId, showAt, hideAt) {
